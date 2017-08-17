@@ -1,0 +1,22 @@
+<h1><%= type %> Runs</h1>
+
+<table>
+  <thead>
+    <th>Date</th>
+    <th>Build Number</th>
+    <th>Environment</th>
+    <th>Pass</th>
+    <th>Duration</th>
+  </thead>
+  <tbody>
+    <% runs.each do |run| %>
+      <tr>
+        <td><%= run[:created_at].strftime('%-m/%-d') %></td>
+        <td><%= run[:build_number] %></td>
+        <td><%= run[:environment] %></td>
+        <td><%= run[:pass] %></td>
+        <td><%= pretty run[:duration] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
