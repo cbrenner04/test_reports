@@ -4,7 +4,7 @@
 
 <table>
   <thead>
-    <th>Weekly</th>
+    <th>Week</th>
     <th>Average Time</th>
     <th>Total Builds</th>
     <th>Total Pass</th>
@@ -12,13 +12,19 @@
     <th>Average Total Time</th>
   </thead>
   <tbody>
+    <% group_records_by_week(first_runs).each do |records| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>
+          <%= records.first.created_at.strftime('%-m/%-d') %> -
+          <%= records.last.created_at.strftime('%-m/%-d') %>
+        </td>
+        <td><%= average_run_time records %></td>
+        <td><%= records.count %></td>
+        <td><%= count_passing records %></td>
+        <td><%= count_passing(records) / records.count %></td>
+        <td><%= average_total_run_time records %></td>
       </tr>
+    <% end %>
   </tbody>
 </table>
 
@@ -26,7 +32,7 @@
 
 <table>
   <thead>
-    <th>Weekly</th>
+    <th>Week</th>
     <th>Average Time</th>
     <th>Total Builds</th>
     <th>Total Pass</th>
@@ -34,12 +40,18 @@
     <th>Average Total Time</th>
   </thead>
   <tbody>
+    <% group_records_by_week(full_runs).each do |records| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>
+          <%= records.first.created_at.strftime('%-m/%-d') %> -
+          <%= records.last.created_at.strftime('%-m/%-d') %>
+        </td>
+        <td><%= average_run_time records %></td>
+        <td><%= records.count %></td>
+        <td><%= count_passing records %></td>
+        <td><%= count_passing(records) / records.count %></td>
+        <td><%= average_total_run_time records %></td>
       </tr>
+    <% end %>
   </tbody>
 </table>

@@ -53,14 +53,14 @@ class App < Sinatra::Base
   get '/daily_aggregates' do
     erb :daily_aggregates_index, locals: {
       first_runs: FirstRun.order(:created_at),
-      full_runs: FullRun.order(:created)
+      full_runs: FullRun.order(:created_at)
     }
   end
 
   get '/weekly_aggregates' do
     erb :weekly_aggregates_index, locals: {
       first_runs: FirstRun.order(:created_at),
-      full_runs: FullRun.order(:created)
+      full_runs: FullRun.order(:created_at)
     }
   end
 end
